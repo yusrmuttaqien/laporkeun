@@ -1,0 +1,47 @@
+@use '@/method';
+
+.card-comp {
+  --dimension: 10em;
+
+  height: var(--dimension);
+  width: var(--dimension);
+
+  font-size: 1rem;
+  background-color: var(--main-color);
+  border-radius: 0.625em;
+
+  .custom-image {
+    height: 50%;
+
+    border-top-left-radius: 0.625em;
+    border-top-right-radius: 0.625em;
+
+    img {
+      object-fit: cover;
+    }
+  }
+
+  .card-comp-content {
+    padding: calc(var(--dimension) / 15);
+
+    h2,
+    p {
+      color: var(--third-color);
+    }
+
+    h2 {
+      @include method.elipsis;
+
+      font-size: calc(var(--dimension) / 11);
+      font-weight: 500;
+    }
+
+    p {
+      @include method.elipsis(3);
+
+      margin-top: calc(var(--dimension) / 100);
+
+      font-size: calc(var(--dimension) / 15);
+    }
+  }
+}

@@ -1,0 +1,56 @@
+@mixin link {
+  color: var(--third-color);
+  text-decoration: none;
+}
+
+@mixin button {
+  padding: 0.8em 1.5em;
+
+  font-size: 1rem;
+  font-weight: 500;
+  background: transparent;
+  border: 1px solid var(--third-color);
+  border-radius: 0.625em;
+  color: var(--third-color);
+  cursor: pointer;
+  transition: var(--transition);
+  transition-property: background, color, opacity;
+  user-select: none;
+  text-decoration: none;
+
+  &:active {
+    background: var(--third-color);
+    color: var(--main-color);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: no-drop;
+  }
+}
+
+@mixin elipsis($l: 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  @if $l >= 2 {
+    display: -webkit-box;
+    -webkit-line-clamp: $l;
+    -webkit-box-orient: vertical;
+  }
+
+  @if $l == 1 {
+    white-space: nowrap;
+  }
+}
+
+@mixin verticalPadding($m: 0) {
+  --padding: 1em;
+
+  @if $m != 0 {
+    --padding: calc(1em + #{$m});
+  }
+
+  padding-left: var(--padding) !important;
+  padding-right: var(--padding) !important;
+}

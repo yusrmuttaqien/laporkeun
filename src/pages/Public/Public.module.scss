@@ -1,0 +1,30 @@
+@use '@/method';
+
+.public-page {
+  min-height: 100%;
+
+  background-color: var(--secondary-color);
+
+  .public-page-lapor-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    padding: 1.5em 0;
+
+    @include method.verticalPadding(-2vw);
+
+    .custom-select {
+      grid-column: 1 / span 2;
+
+      margin-bottom: 1rem;
+      padding: 0 3em;
+    }
+
+    .custom-card {
+      --dimension: 45vw;
+
+      justify-self: center;
+      margin-bottom: 1rem;
+    }
+  }
+}

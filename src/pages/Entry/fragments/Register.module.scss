@@ -1,0 +1,28 @@
+@use '@/method';
+
+.entry-comp-reg-frag {
+  form {
+    display: flex;
+    flex-direction: column;
+
+    padding: 1em 2em 0;
+
+    font-size: 1rem;
+
+    .custom-input {
+      font-size: 0.8em;
+
+      &:not(:first-child) {
+        margin-top: 1.5em;
+      }
+    }
+
+    .custom-button {
+      @include method.button;
+
+      margin-top: 3em;
+
+      font-size: 0.8em;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.entry-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100%;
+
+  .view-wrapper-entry-page {
+    flex: 1;
+
+    width: 100%;
+    padding-bottom: 1.5em;
+  }
+}
