@@ -3,12 +3,43 @@
 .card-comp {
   --dimension: 10em;
 
+  position: relative;
   height: var(--dimension);
   width: var(--dimension);
 
   font-size: 1rem;
-  background-color: var(--main-color);
   border-radius: 0.625em;
+
+  background-color: var(--main-color);
+  cursor: pointer;
+
+  .card-comp-status {
+    display: flex;
+    align-items: center;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    padding: calc(var(--dimension) / 28);
+
+    background-color: rgba(var(--main-color-rgb), 0.2);
+    backdrop-filter: blur(var(--blur));
+    border-bottom-left-radius: 0.625em;
+    border-top-right-radius: 0.625em;
+
+    svg {
+      height: calc(var(--dimension) / 12);
+      width: auto;
+
+      fill: rgba(var(--third-color-rgb), 0.8);
+    }
+
+    p {
+      color: rgba(var(--third-color-rgb), 0.8);
+      font-size: calc(var(--dimension) / 15);
+    }
+  }
 
   .custom-image {
     height: 50%;
@@ -43,5 +74,14 @@
 
       font-size: calc(var(--dimension) / 15);
     }
+  }
+
+  .card-comp-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
   }
 }

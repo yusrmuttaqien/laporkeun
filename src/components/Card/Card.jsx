@@ -1,27 +1,32 @@
+import { Link } from 'react-router-dom';
+
 import { stringConcat } from '@/utils/helpers';
+
 import Image from '../Image';
+
+import ArrowUp from '@/assets/arrow-up.svg?component';
 
 import styles from './Card.module.scss';
 
 export default function Card(props) {
-  const { customClass } = props;
+  const {
+    customClass,
+    payload: { images, rating, content, name },
+  } = props;
   const cardClasses = stringConcat([styles['card-comp'], customClass]);
 
   return (
     <section className={cardClasses}>
-      <Image
-        customClass={styles['custom-image']}
-        payload={{
-          nonWebP:
-            'https://firebasestorage.googleapis.com/v0/b/laporkeun-apps.appspot.com/o/laporan%2Fd8eccb9fd824c692737e1a3e663b674d1623258004923.jpeg?alt=media&token=2a578ca0-cfb4-417e-8da1-ab5eb625478b',
-        }}
-      />
+      <span className={styles['card-comp-status']}>
+        <ArrowUp />
+        <p>{rating}</p>
+      </span>
+      <Image customClass={styles['custom-image']} payload={images} />
       <section className={styles['card-comp-content']}>
-        <h2>Titleefefesfsefeee</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rem, enim?
-        </p>
+        <h2>{content.title}</h2>
+        <p>{content.desc}</p>
       </section>
+      <Link to={`/publik/${name}`} className={styles['card-comp-link']} />
     </section>
   );
 }

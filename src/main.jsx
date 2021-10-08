@@ -1,6 +1,9 @@
+import '@hookstate/devtools';
+
 import { render } from 'preact';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { App } from './app';
+
 import './index.css';
 
 function Init() {

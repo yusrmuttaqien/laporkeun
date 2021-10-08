@@ -1,0 +1,49 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - main
+
+env:
+  VITE_APP_API_KEY: ${{ secrets.VITE_APP_API_KEY}}
+  VITE_APP_AUTH_DOMAIN: ${{ secrets.VITE_APP_AUTH_DOMAIN}}
+  VITE_APP_PROJECT_ID: ${{ secrets.VITE_APP_PROJECT_ID}}
+  VITE_APP_STORAGE_BUCKET: ${{ secrets.VITE_APP_STORAGE_BUCKET}}
+  VITE_APP_MS_ID: ${{ secrets.VITE_APP_MS_ID}}
+  VITE_APP_AID: ${{ secrets.VITE_APP_AID}}
+  VITE_APP_PREFIX: ${{ secrets.VITE_APP_PREFIX}}
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: build
+          path: build
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Download Artifact
+        uses: actions/download-artifact@master
+        with:
+          name: build
+          path: build
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@master
+        with:
+          args: deploy
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

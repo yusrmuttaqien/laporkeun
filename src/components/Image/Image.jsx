@@ -16,6 +16,8 @@ import styles from './Image.module.scss';
  *
  * @param {Object} props
  * @param {Object} props.customClass - Append custom class to wrapper node
+ * @param {Function} props.status - A state setter for when img loaded
+ * @param {String} props.layoutId - A layoutId for img content element (framer-motion)
  * @param {Object} props.payload - A list of data properties to show
  * @param {String} props.payload.thumbnail - Placeholder image displayed while loading full res image, as: [Base64]
  * @param {String} props.payload.WebP - Image for WebP type, as: [WebP]
@@ -25,10 +27,15 @@ import styles from './Image.module.scss';
  */
 
 export default function ImageComp(props) {
-  const { payload, customClass } = props;
+  const { payload, customClass, status, layoutId } = props;
 
   const [isThumbnail, setThumbnail] = useState(false);
+  const [isImage, setImage] = useState();
+  const [isClass, setClass] = useState(
+    stringConcat([styles['image-comp-image'], styles.standby])
+  );
   const [isLoading, setLoading] = useState(true);
+  const [isStatus, setStatus] = useState(false);
   const [isError, setError] = useState(false);
   const imgWrapper = useRef();
 
@@ -41,10 +48,6 @@ export default function ImageComp(props) {
     styles['image-comp-thumbnail'],
     isLoading && styles.display,
   ]);
-  const sourceClasses = stringConcat([
-    styles['image-comp-image'],
-    styles.standby,
-  ]);
   let source, imgElement;
 
   const onView = async (inView) => {
@@ -55,6 +58,11 @@ export default function ImageComp(props) {
       if (!payload) {
         setError('Data dibutuhkan');
         return;
+      }
+
+      // Check status
+      if (typeof status === 'function') {
+        setStatus(true);
       }
 
       // Check thumbnail & thumbnail alt
@@ -74,30 +82,21 @@ export default function ImageComp(props) {
       } else if (payload.nonWebP) {
         source = payload.nonWebP;
       } else {
-        setError('Sumber gambar dibutuhkan');
+        setError('Tidak ada gambar');
         return;
       }
 
-      // Fetch image
-      source = await getFetch(source, { outputAs: 'blobURL' });
+      // Fetch & compose image
+      try {
+        source = await getFetch(source, { outputAs: 'blobURL' });
 
-      // Create img element
-      imgElement = new Image();
-      imgElement.src = source;
-      imgElement.alt = `img_${payload?.alt || 'alt'}`;
-      imgElement.draggable = false;
-      imgElement.className = sourceClasses;
-      imgElement.onload = () => {
-        imgWrapper.current.appendChild(imgElement);
+        setImage(source);
         setLoading(false);
-        requestTimeout(
-          () => (imgElement.className = styles['image-comp-image']),
-          10
-        );
-      };
-      imgElement.onerror = () => {
+        isStatus && status(true);
+        requestTimeout(() => setClass(styles['image-comp-image']), 10);
+      } catch {
         setError('Gagal memuat gambar');
-      };
+      }
     }
 
     return;
@@ -105,7 +104,7 @@ export default function ImageComp(props) {
 
   useEffect(() => {
     return () => URL.revokeObjectURL(source);
-  }, []);
+  }, [source]);
 
   return (
     <section className={imageClasses} ref={imgWrapper}>
@@ -124,6 +123,14 @@ export default function ImageComp(props) {
           className={thumbnailClasses}
           draggable={false}
         />
+      )}
+      {isImage && (
+        <img
+          src={isImage}
+          alt={`img_${payload?.alt || 'alt'}`}
+          draggable={false}
+          className={isClass}
+        ></img>
       )}
     </section>
   );

@@ -9,6 +9,7 @@ html {
   /* Units */
   --header-height-mobile: 50px;
   --nav-height-mobile: 60px;
+  --blur: 10px;
 
   /* Colors */
   --main-color: #ffffff;
@@ -17,6 +18,7 @@ html {
   --third-color: #000000;
   --third-color-rgb: 0, 0, 0;
   --red: #ff0202;
+  --green: #17ff02;
 
   /* Whole value */
   --transition: 0.3s ease-in-out;
@@ -28,6 +30,10 @@ html[data-theme='dark'] {
   --secondary-color: #161616;
   --third-color: #ffffff;
   --third-color-rgb: 255, 255, 255;
+}
+
+*[data-scroll-disabled='true'] {
+  overflow: hidden !important;
 }
 
 * {

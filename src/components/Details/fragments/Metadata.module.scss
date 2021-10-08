@@ -1,0 +1,62 @@
+@use '@/method';
+
+.details-comp-meta-frag {
+  width: 100%;
+  padding: 1em;
+
+  @include method.verticalPadding;
+
+  background-color: var(--secondary-color);
+  overflow-y: auto;
+
+  p {
+    display: inline-flex;
+
+    color: rgba(var(--third-color-rgb), 0.3);
+    font-size: 0.75em;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    white-space: nowrap;
+
+    &:not(:last-child) {
+      margin-bottom: 0.5em;
+    }
+
+    &::before {
+      align-self: center;
+      flex-shrink: 0;
+
+      margin-right: 0.8em;
+      height: 1.2em;
+      width: 1.2em;
+
+      content: '';
+      mask-size: cover;
+      background-color: rgba(var(--third-color-rgb), 0.3);
+    }
+
+    &[data-type='n'] {
+      &::before {
+        mask: url('@/assets/people.svg') no-repeat 50% 50%;
+      }
+    }
+
+    &[data-type='d'] {
+      &::before {
+        mask: url('@/assets/calendar.svg') no-repeat 50% 50%;
+      }
+    }
+
+    &[data-type='s'] {
+      &::before {
+        mask: url('@/assets/time-dot.svg') no-repeat 50% 50%;
+      }
+    }
+
+    &[data-type='v'] {
+      &::before {
+        mask: url('@/assets/globe.svg') no-repeat 50% 50%;
+      }
+    }
+  }
+}

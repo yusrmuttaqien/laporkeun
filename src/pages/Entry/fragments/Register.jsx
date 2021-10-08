@@ -1,6 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import callToast from '@/components/Toast/callToast';
+import { registration } from '@/utils/helpers/auth';
+
 import { Input } from '@/components/Input';
 
 import _daftarValidation from '../variables/_daftarValidation';
@@ -17,14 +20,33 @@ export default function Register() {
     resolver: yupResolver(_daftarValidation),
   });
 
+  const onSubmit = async (e) => {
+    try {
+      await registration(e);
+    } catch (err) {
+      callToast(err, {
+        title: ['code', 'title'],
+        content: ['message', 'content'],
+      });
+    }
+  };
+
   return (
     <section className={styles['entry-comp-reg-frag']}>
-      <form>
+      <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <Input
           customClass={styles['custom-input']}
           r={register}
           e={errors}
-          name="namaUser"
+          name="email"
+          placeholder="Alamat surel disini"
+          label="Alamat Surel"
+        />
+        <Input
+          customClass={styles['custom-input']}
+          r={register}
+          e={errors}
+          name="username"
           placeholder="Nama user disini"
           label="Nama User"
         />
@@ -32,7 +54,7 @@ export default function Register() {
           customClass={styles['custom-input']}
           r={register}
           e={errors}
-          name="kataSandi"
+          name="password"
           placeholder="Kata sandi disini"
           label="Kata Sandi"
           type="password"
@@ -41,7 +63,7 @@ export default function Register() {
           customClass={styles['custom-input']}
           r={register}
           e={errors}
-          name="konfirmasiKataSandi"
+          name="confirmPassword"
           placeholder="Konfirmasi kata sandi disini"
           label="Konfirmasi Kata Sandi"
           type="password"

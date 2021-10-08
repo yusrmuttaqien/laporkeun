@@ -2,8 +2,11 @@
 
 .public-page {
   min-height: 100%;
+  position: relative;
 
   background-color: var(--secondary-color);
+
+  font-size: 1rem;
 
   .public-page-lapor-wrapper {
     display: grid;
@@ -16,15 +19,16 @@
     .custom-select {
       grid-column: 1 / span 2;
 
-      margin-bottom: 1rem;
+      margin-bottom: 1em;
       padding: 0 3em;
+      z-index: 5;
     }
 
     .custom-card {
       --dimension: 45vw;
 
       justify-self: center;
-      margin-bottom: 1rem;
+      margin-bottom: 1em;
     }
   }
 }

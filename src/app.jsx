@@ -1,19 +1,25 @@
 import { Suspense } from 'preact/compat';
 import { Switch, Route, useLocation } from 'react-router-dom';
-import { lazy } from '@loadable/component';
+import loadable, { lazy } from '@loadable/component';
+
+import { loadedFeaturesStateC } from './utils/configs/states';
 
 import Navigation from './components/Navigation';
+import Loading from './components/Loading/Loading';
 
 import styles from './app.module.scss';
-import Loading from './components/Loading/Loading';
 
 const Entry = lazy(() => import('./pages/Entry'));
 const Public = lazy(() => import('./pages/Public'));
+const Toast = loadable(() => import('./components/Toast/Toast'));
 
 export function App() {
+  const state = loadedFeaturesStateC();
+
   return (
     <section className={styles['app-wrapper']}>
-      <section className={styles['view-wrapper']}>
+      {state.getFeatures('isToast') && <Toast />}
+      <section className={styles['view-wrapper']} id="main-view">
         <Switch>
           <Suspense
             fallback={

@@ -1,0 +1,48 @@
+.details-comp-close-frag {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 1em;
+
+  background-color: rgba(var(--main-color-rgb), 0.2);
+  backdrop-filter: blur(var(--blur));
+
+  svg {
+    height: 1em;
+    width: 1em;
+
+    cursor: pointer;
+  }
+
+  .close-frag-status {
+    display: flex;
+    align-items: center;
+
+    cursor: pointer;
+
+    svg {
+      height: 1.2em;
+      width: 1.2em;
+    }
+
+    p {
+      font-size: 0.9em;
+    }
+
+    &.upvoted {
+      svg {
+        fill: var(--green);
+      }
+
+      p {
+        color: var(--green);
+      }
+    }
+  }
+}

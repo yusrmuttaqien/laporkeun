@@ -21,7 +21,6 @@ export default {
     svg: {
       height: '1em',
       width: 'auto',
-      fill: 'var(--third-color)',
     },
   }),
   indicatorSeparator: (base) => ({
@@ -32,7 +31,7 @@ export default {
     ...base,
     backgroundColor: 'rgba(var(--main-color-rgb), .8)',
     borderRadius: 0,
-    backdropFilter: 'blur(10px)',
+    backdropFilter: 'blur(var(--blur))',
   }),
   option: (base, state) => ({
     ...base,
