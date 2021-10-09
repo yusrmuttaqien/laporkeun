@@ -5,6 +5,7 @@ import callToast from '@/components/Toast/callToast';
 import { registration } from '@/utils/helpers/auth';
 
 import { Input } from '@/components/Input';
+import Spinner from '@/components/Spinner';
 
 import _daftarValidation from '../variables/_daftarValidation';
 
@@ -16,7 +17,7 @@ export default function Register() {
     handleSubmit,
     formState: { isDirty, isValid, errors, isSubmitting },
   } = useForm({
-    mode: 'onBlur',
+    mode: 'onChange',
     resolver: yupResolver(_daftarValidation),
   });
 
@@ -72,7 +73,7 @@ export default function Register() {
           disabled={!isDirty || !isValid || isSubmitting}
           className={styles['custom-button']}
         >
-          Daftar
+          {isSubmitting ? <Spinner button /> : 'Daftar'}
         </button>
       </form>
     </section>

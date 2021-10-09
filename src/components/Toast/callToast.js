@@ -28,5 +28,5 @@ export default async function callToast(payload, bind) {
 
   window.toast_ydhm
     ? window.toast_ydhm(data)
-    : requestTimeout(() => window.toast_ydhm && window.toast_ydhm(data), 100);
+    : requestTimeout(() => window.toast_ydhm(data), 1000);
 }

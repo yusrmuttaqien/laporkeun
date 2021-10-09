@@ -1,22 +1,15 @@
-.nav-comp {
-  --shadow-height: 20px;
+@use '@/method';
 
-  display: flex;
-  align-items: center;
-  gap: 1em;
+.nav-comp {
+  --shadow-height: 22px;
 
   width: 100vw;
-  padding: calc(1em - var(--shadow-height)) 0
-    calc((1em - var(--shadow-height)) + 1em);
+
   position: relative;
   z-index: 10;
 
   font-size: 1rem;
   background-color: var(--main-color);
-
-  svg {
-    width: 10em;
-  }
 
   &::before {
     position: absolute;
@@ -30,9 +23,45 @@
     background: linear-gradient(180deg, transparent 0%, var(--main-color) 70%);
   }
 
-  &.not-logged {
-    flex-direction: column;
+  .scroller {
+    display: flex;
+    align-items: center;
+    gap: 1em;
 
-    height: fit-content;
+    padding: calc(1em - var(--shadow-height)) 1em
+      calc((1em - var(--shadow-height)) + 1em);
+    width: 100%;
+    height: 100%;
+
+    overflow-x: auto;
+
+    svg {
+      width: 10em;
+    }
+
+    .nav-comp-custom-button {
+      --accent: var(--third-color);
+
+      @include method.button(var(--accent));
+
+      flex-shrink: 0;
+
+      font-size: 0.7em;
+
+      &.red {
+        --accent: var(--red);
+      }
+    }
+  }
+  &.not-logged {
+    .scroller {
+      flex-direction: column;
+
+      height: fit-content;
+
+      .nav-comp-custom-button {
+        margin: 0 auto;
+      }
+    }
   }
 }

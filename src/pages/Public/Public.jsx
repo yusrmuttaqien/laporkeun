@@ -4,13 +4,14 @@ import loadable from '@loadable/component';
 
 import Header from '@/components/Header';
 import { Select } from '@/components/Input';
-import Loading from '@/components/Loading/Loading';
+import Loading from '@/components/Loading';
+import CRoute from '@/components/CRoute';
 
 import styles from './Public.module.scss';
 
-const renderPublic = loadable(() => import('./fragments/renderPublic'));
+const renderList = loadable(() => import('./fragments/renderPublic'));
 
-export default function Public() {
+function renderPublic() {
   const { path } = useRouteMatch();
 
   return (
@@ -22,8 +23,12 @@ export default function Public() {
           isSearchable={false}
           placeholder="Opsi sortir"
         />
-        <Route exact path={[`${path}/:name`, path]} component={renderPublic} />
+        <Route exact path={[`${path}/:name`, path]} component={renderList} />
       </section>
     </section>
   );
+}
+
+export default function Public() {
+  return <CRoute path="/publik" Component={renderPublic} />;
 }

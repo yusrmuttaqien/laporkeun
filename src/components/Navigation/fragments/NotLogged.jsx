@@ -4,7 +4,7 @@ import { stringPartialSearch } from '@/utils/helpers';
 
 import Logo from '@/assets/Logo.svg?component';
 
-import styles from './NotLogged.module.scss';
+import styles from '../Navigation.module.scss';
 
 export default function NotLogged(props) {
   const { c } = props;
@@ -15,7 +15,7 @@ export default function NotLogged(props) {
         <>
           <Logo />
           <NavLink to="/publik" className={styles['nav-comp-custom-button']}>
-            Lihat laporan publik
+            Laporan publik
           </NavLink>
         </>
       );

@@ -8,6 +8,7 @@ import { main } from '@/utils/configs';
 import { addData, getQuery } from '../firestore';
 import { hash } from '..';
 import { updatesProfile } from '.';
+import callToast from '@/components/Toast/callToast';
 
 export default async function registation(payload) {
   const { username, email, password } = payload;
@@ -57,6 +58,11 @@ export default async function registation(payload) {
   } catch (err) {
     throw err;
   }
+
+  callToast({
+    title: 'Autentikasi',
+    content: 'Selamat, akun anda berhasil terdaftar',
+  });
 
   return true;
 }

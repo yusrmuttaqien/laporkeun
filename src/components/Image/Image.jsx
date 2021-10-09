@@ -8,7 +8,7 @@ import {
   stringConcat,
 } from '@/utils/helpers';
 
-import Loading from '@/components/Loading/Loading';
+import Loading from '@/components/Loading';
 
 import styles from './Image.module.scss';
 
@@ -17,7 +17,6 @@ import styles from './Image.module.scss';
  * @param {Object} props
  * @param {Object} props.customClass - Append custom class to wrapper node
  * @param {Function} props.status - A state setter for when img loaded
- * @param {String} props.layoutId - A layoutId for img content element (framer-motion)
  * @param {Object} props.payload - A list of data properties to show
  * @param {String} props.payload.thumbnail - Placeholder image displayed while loading full res image, as: [Base64]
  * @param {String} props.payload.WebP - Image for WebP type, as: [WebP]
@@ -27,7 +26,7 @@ import styles from './Image.module.scss';
  */
 
 export default function ImageComp(props) {
-  const { payload, customClass, status, layoutId } = props;
+  const { payload, customClass, status } = props;
 
   const [isThumbnail, setThumbnail] = useState(false);
   const [isImage, setImage] = useState();

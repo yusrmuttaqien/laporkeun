@@ -1,4 +1,4 @@
-export default function objectSelectFirstAvailable(lists, option) {
+export function objectSelectFirstAvailable(lists, option) {
   let i;
 
   if (option.length === 0) {
@@ -12,4 +12,8 @@ export default function objectSelectFirstAvailable(lists, option) {
   }
 
   return lists[option[i]];
+}
+
+export function proxyToObject(p) {
+  return JSON.parse(JSON.stringify(p));
 }

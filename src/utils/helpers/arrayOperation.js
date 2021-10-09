@@ -6,7 +6,7 @@
  * @returns - Index of matching key inside array
  */
 
-export default function arraySearchByValue(arr, val, key) {
+export function arraySearchByValue(arr, val, key) {
   let id;
 
   for (let i = 0; i < arr.length; i++) {
@@ -16,4 +16,8 @@ export default function arraySearchByValue(arr, val, key) {
   }
 
   return id;
+}
+
+export function arrayAnd(arr) {
+  return !arr.includes(false);
 }

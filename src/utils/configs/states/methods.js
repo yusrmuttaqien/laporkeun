@@ -2,6 +2,19 @@ import { arraySearchByValue, proxyToObject } from '@/utils/helpers';
 
 import { none } from '@hookstate/core';
 
+export const persistMethod = (s, og) => ({
+  setPersist: (persist) => s.set({ init: persist }),
+  getPersist: () => s.init.get(),
+  resetPersist: () => s.set(og),
+  isLogged: () => Object.keys(proxyToObject(s.value)).length > 0,
+});
+
+export const CUMethod = (s, og) => ({
+  setCU: (cu) => s.set(cu),
+  updateCU: (cu) => s.merge(cu),
+  resetCU: () => s.set(og),
+});
+
 export const toastMethod = (s, og) => ({
   addToast: (toast) => {
     s.length + 1 > 20 && s[0].set(none);

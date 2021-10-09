@@ -3,14 +3,15 @@ import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { lazy } from '@loadable/component';
 
 import Switcher from './fragments/Switcher';
-import Loading from '@/components/Loading/Loading';
+import Loading from '@/components/Loading';
+import CRoute from '@/components/CRoute';
 
 import styles from './Entry.module.scss';
 
 const Login = lazy(() => import('./fragments/Login'));
 const Register = lazy(() => import('./fragments/Register'));
 
-export default function Entry() {
+function renderEntry() {
   let { path, url } = useRouteMatch();
 
   return (
@@ -26,4 +27,8 @@ export default function Entry() {
       </section>
     </section>
   );
+}
+
+export default function Entry() {
+  return <CRoute path="/entri" notLogged Component={renderEntry} />;
 }

@@ -1,7 +1,11 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
+import callToast from '@/components/Toast/callToast';
+import { login } from '@/utils/helpers/auth';
+
 import { Input } from '@/components/Input';
+import Spinner from '@/components/Spinner';
 
 import _masukValidation from '../variables/_masukValidation';
 
@@ -13,26 +17,37 @@ export default function Login() {
     handleSubmit,
     formState: { isDirty, isValid, errors, isSubmitting },
   } = useForm({
-    mode: 'onBlur',
+    mode: 'onChange',
     resolver: yupResolver(_masukValidation),
   });
 
+  const onSubmit = async (e) => {
+    try {
+      await login(e);
+    } catch (err) {
+      callToast(err, {
+        title: ['code', 'title'],
+        content: ['message', 'content'],
+      });
+    }
+  };
+
   return (
     <section className={styles['entry-comp-login-frag']}>
-      <form>
+      <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <Input
           customClass={styles['custom-input']}
           r={register}
           e={errors}
-          name="namaUser"
-          placeholder="Nama user disini"
-          label="Nama User"
+          name="email"
+          placeholder="Alamat surel disini"
+          label="Alamat Surel"
         />
         <Input
           customClass={styles['custom-input']}
           r={register}
           e={errors}
-          name="kataSandi"
+          name="password"
           placeholder="Kata sandi disini"
           label="Kata Sandi"
           type="password"
@@ -41,7 +56,7 @@ export default function Login() {
           disabled={!isDirty || !isValid || isSubmitting}
           className={styles['custom-button']}
         >
-          Masuk
+          {isSubmitting ? <Spinner button /> : 'Masuk'}
         </button>
       </form>
     </section>
