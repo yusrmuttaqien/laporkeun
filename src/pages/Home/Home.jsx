@@ -1,6 +1,8 @@
 import CRoute from '@/components/CRoute';
 import Image from '@/components/Image';
 
+import Logo from '@/assets/Logo.svg?component';
+
 import styles from './Home.module.scss';
 
 function renderHome() {
@@ -15,6 +17,14 @@ function renderHome() {
           alt: 'backdrop',
         }}
       />
+      <section className={styles['home-page-intro']}>
+        <div className={styles['home-page-logo']}>
+          <Logo />
+          <h2>Laporkeun</h2>
+          <p>sampaikan keluhan anda disini</p>
+        </div>
+        <button className={styles['custom-button']}>Dibelakang layar</button>
+      </section>
     </section>
   );
 }

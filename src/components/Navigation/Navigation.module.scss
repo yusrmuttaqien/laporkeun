@@ -53,12 +53,9 @@
       }
     }
   }
+
   &.not-logged {
     .scroller {
-      flex-direction: column;
-
-      height: fit-content;
-
       .nav-comp-custom-button {
         margin: 0 auto;
       }

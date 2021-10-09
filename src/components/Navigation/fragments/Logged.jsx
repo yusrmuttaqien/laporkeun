@@ -23,19 +23,40 @@ export default function Logged() {
 
   return (
     <>
-      <NavLink to="/" className={styles['nav-comp-custom-button']}>
+      <NavLink
+        exact
+        to="/"
+        className={styles['nav-comp-custom-button']}
+        activeClassName={styles['active']}
+      >
         <Home />
       </NavLink>
-      <NavLink to="/baru" className={styles['nav-comp-custom-button']}>
+      <NavLink
+        to="/baru"
+        className={styles['nav-comp-custom-button']}
+        activeClassName={styles['active']}
+      >
         Tambah laporan
       </NavLink>
-      <NavLink to="/laporanku" className={styles['nav-comp-custom-button']}>
+      <NavLink
+        to="/laporanku"
+        className={styles['nav-comp-custom-button']}
+        activeClassName={styles['active']}
+      >
         Laporanku
       </NavLink>
-      <NavLink to="/publik" className={styles['nav-comp-custom-button']}>
+      <NavLink
+        to="/publik"
+        className={styles['nav-comp-custom-button']}
+        activeClassName={styles['active']}
+      >
         Laporan publik
       </NavLink>
-      <NavLink to="/profil" className={styles['nav-comp-custom-button']}>
+      <NavLink
+        to="/profil"
+        className={styles['nav-comp-custom-button']}
+        activeClassName={styles['active']}
+      >
         Profil
       </NavLink>
       <button className={logoutClasses} onClick={endSession}>

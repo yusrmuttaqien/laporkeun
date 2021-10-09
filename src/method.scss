@@ -25,6 +25,10 @@
   &:active {
     background: $a;
     color: var(--main-color);
+
+    svg {
+      fill: var(--main-color);
+    }
   }
 
   &:disabled {
@@ -35,6 +39,15 @@
   [class*='spinner-button'],
   svg {
     font-size: 0.12em;
+  }
+
+  &.active {
+    background: $a;
+    color: var(--main-color);
+
+    svg {
+      fill: var(--main-color);
+    }
   }
 }
 

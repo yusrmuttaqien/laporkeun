@@ -2,8 +2,6 @@ import { NavLink } from 'react-router-dom';
 
 import { stringPartialSearch } from '@/utils/helpers';
 
-import Logo from '@/assets/Logo.svg?component';
-
 import styles from '../Navigation.module.scss';
 
 export default function NotLogged(props) {
@@ -13,7 +11,6 @@ export default function NotLogged(props) {
     if (stringPartialSearch(['/entri'], c)) {
       return (
         <>
-          <Logo />
           <NavLink to="/publik" className={styles['nav-comp-custom-button']}>
             Laporan publik
           </NavLink>
@@ -22,7 +19,6 @@ export default function NotLogged(props) {
     } else if (c === '/') {
       return (
         <>
-          <Logo />
           <NavLink to="/entri" className={styles['nav-comp-custom-button']}>
             Daftar atau Masuk
           </NavLink>
