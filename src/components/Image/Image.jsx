@@ -1,7 +1,7 @@
-import { useState, useRef, useEffect } from 'preact/hooks';
+import { useState, useRef } from 'preact/hooks';
 import { InView } from 'react-intersection-observer';
 
-import { detectWebP, requestTimeout, stringConcat } from '@/utils/helpers';
+import { detectWebP, stringConcat } from '@/utils/helpers';
 
 import Loading from '@/components/Loading';
 
@@ -61,19 +61,12 @@ export default function ImageComp(props) {
         imgElement = new Image();
         imgElement.draggable = false;
         imgElement.alt = payload.alt || 'noAlt';
-        imgElement.className = stringConcat([
-          styles['image-comp-image'],
-          styles.standby,
-        ]);
+        imgElement.className = styles['image-comp-image'];
 
         imgElement.onload = () => {
           imgWrapper.current.appendChild(imgElement);
 
           setLoading(false);
-          requestTimeout(
-            () => (imgElement.className = styles['image-comp-image']),
-            10
-          );
         };
         imgElement.src = source;
       } catch {
@@ -83,10 +76,6 @@ export default function ImageComp(props) {
 
     return;
   };
-
-  useEffect(() => {
-    return () => URL.revokeObjectURL(source);
-  }, [source]);
 
   return (
     <section className={imageClasses} ref={imgWrapper}>
