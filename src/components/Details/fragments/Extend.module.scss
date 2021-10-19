@@ -1,11 +1,7 @@
 .details-comp-extend-frag {
-  position: absolute;
   height: 90%;
   width: 90%;
-  left: 50%;
-  top: 50%;
 
-  transform: translate(-50%, -50%);
   border-radius: 0.625em;
   background-color: var(--main-color);
   overflow-y: auto;

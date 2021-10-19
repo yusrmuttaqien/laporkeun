@@ -1,4 +1,5 @@
-import { arraySearchByValue, proxyToObject } from '@/utils/helpers';
+import { arraySearchByValue } from '@/utils/helpers/arrayOperation';
+import { proxyToObject } from '@/utils/helpers/objectOperation';
 
 import { none } from '@hookstate/core';
 
@@ -13,19 +14,6 @@ export const CUMethod = (s, og) => ({
   setCU: (cu) => s.set(cu),
   updateCU: (cu) => s.merge(cu),
   resetCU: () => s.set(og),
-});
-
-export const toastMethod = (s, og) => ({
-  addToast: (toast) => {
-    s.length + 1 > 20 && s[0].set(none);
-    return s.merge([toast]);
-  },
-  deleteToast: (id) => {
-    const index = arraySearchByValue(proxyToObject(s.value), id, 'id');
-    return s[index].set(none);
-  },
-  clearToast: () => s.set(og),
-  getToast: () => s.get(),
 });
 
 export const scrollMethod = (s) => ({

@@ -1,17 +1,28 @@
 import { NavLink } from 'react-router-dom';
 
+import { stringConcat } from '@/utils/helpers/stringOperation';
+import logout from '@/utils/helpers/auth/logout';
+import callToast from '@/components/Toast/callToast';
+import callPrompt from '@/components/Prompt/callPrompt';
+
 import Home from '@/assets/home.svg?component';
-import { stringConcat } from '@/utils/helpers';
-import { logout } from '@/utils/helpers/auth';
 
 import styles from '../Navigation.module.scss';
-import callToast from '@/components/Toast/callToast';
 
 export default function Logged() {
   const logoutClasses = stringConcat([
     styles['nav-comp-custom-button'],
     styles['red'],
   ]);
+
+  const promptlogout = () => {
+    callPrompt({
+      title: 'Keluar ?',
+      content: <p>Anda yakin ingin keluar dari akun ?</p>,
+      buttonNext: { title: 'Ya, keluar', action: endSession },
+      buttonBack: { title: 'Tidak, kembali' },
+    });
+  };
 
   const endSession = async () => {
     try {
@@ -59,7 +70,7 @@ export default function Logged() {
       >
         Profil
       </NavLink>
-      <button className={logoutClasses} onClick={endSession}>
+      <button className={logoutClasses} onClick={promptlogout}>
         Keluar
       </button>
     </>

@@ -1,4 +1,4 @@
-import { stringConcat } from '@/utils/helpers';
+import { stringConcat } from '@/utils/helpers/stringOperation';
 
 export default function Spinner(props) {
   const { customClass, style, button } = props;

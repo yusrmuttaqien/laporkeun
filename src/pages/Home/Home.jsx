@@ -1,17 +1,9 @@
-import { useState } from 'preact/hooks';
-
-import CRoute from '@/components/CRoute';
 import Image from '@/components/Image';
-import Splash from './fragments/Splash';
-import Credit from './fragments/Credit';
+import Info from './fragments/Info';
 
 import styles from './Home.module.scss';
 
-function renderHome() {
-  const [credit, setCredit] = useState(false);
-
-  const creditSwitch = () => setCredit((prev) => !prev);
-
+export default function Home() {
   return (
     <section className={styles['home-page']}>
       <Image
@@ -23,16 +15,7 @@ function renderHome() {
           alt: 'backdrop',
         }}
       />
-      <section className={styles['home-page-intro']}>
-        {credit ? <Credit /> : <Splash />}
-        <button className={styles['custom-button']} onClick={creditSwitch}>
-          {credit ? 'Kembali' : 'Dibelakang layar'}
-        </button>
-      </section>
+      <Info />
     </section>
   );
-}
-
-export default function Home() {
-  return <CRoute exact path="/" Component={renderHome} />;
 }

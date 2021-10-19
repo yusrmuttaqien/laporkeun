@@ -1,7 +1,8 @@
 import { useState, useRef } from 'preact/hooks';
 import { InView } from 'react-intersection-observer';
 
-import { detectWebP, stringConcat } from '@/utils/helpers';
+import { stringConcat } from '@/utils/helpers/stringOperation';
+import detectWebP from '@/utils/helpers/detectWebP';
 
 import Loading from '@/components/Loading';
 

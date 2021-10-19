@@ -1,4 +1,4 @@
-export const detail_variant = {
+export const prompt_variant = {
   initial: {
     opacity: 0,
   },

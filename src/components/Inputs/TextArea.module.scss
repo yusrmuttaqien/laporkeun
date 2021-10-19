@@ -1,0 +1,60 @@
+.textarea-comp {
+  display: flex;
+  flex-direction: column-reverse;
+
+  font-size: 1rem;
+
+  label {
+    opacity: 0;
+    user-select: none;
+    transition: var(--transition);
+    transition-property: opacity;
+    font-size: 0.8em;
+    letter-spacing: 0.05em;
+  }
+
+  textarea {
+    padding: 1em;
+    height: 10em;
+
+    font-size: 0.95em;
+    border: none;
+    border-bottom: 1px solid var(--third-color);
+    outline: none;
+    background: transparent;
+    opacity: 0.5;
+    transition: var(--transition);
+    transition-property: opacity;
+    letter-spacing: 0.05em;
+    resize: none;
+
+    &:focus {
+      opacity: 1;
+
+      + label {
+        opacity: 1;
+      }
+    }
+  }
+
+  ::placeholder {
+    color: var(--third-color);
+    letter-spacing: 0.05em;
+  }
+
+  &.error {
+    label {
+      opacity: 1;
+      color: var(--red);
+    }
+
+    input {
+      border-color: var(--red);
+      color: var(--red);
+    }
+
+    ::placeholder {
+      color: var(--red);
+    }
+  }
+}

@@ -1,6 +1,6 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
-import { main } from '@/utils/configs';
+import { main } from '@/utils/configs/firebase';
 import { CUStateF, persistStateF } from '@/utils/configs/states';
 
 import callToast from '@/components/Toast/callToast';

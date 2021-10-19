@@ -1,4 +1,5 @@
-import { requestTimeout, objectSelectFirstAvailable } from '@/utils/helpers';
+import { requestTimeout } from '@/utils/helpers/requestTimeout';
+import { objectSelectFirstAvailable } from '@/utils/helpers/objectOperation';
 import { loadedFeaturesStateF } from '@/utils/configs/states';
 
 /**

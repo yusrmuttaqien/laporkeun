@@ -13,13 +13,13 @@ export default function Credit() {
   return (
     <div className={styles['home-page-info']}>
       <figure className={styles['info-creator']}>
-        <Image
+        {/* <Image
           customClass={styles['custom-image']}
           payload={{
             nonWebP:
               'https://firebasestorage.googleapis.com/v0/b/laporkeun-test.appspot.com/o/assets%2Fyusrdhm.jpg?alt=media&token=aa928de7-a04a-4263-b95a-8e293302e45f',
           }}
-        />
+        /> */}
         <div className={styles['creator']}>
           <p>creator of laporkeun</p>
           <h2>yusr.dhm</h2>

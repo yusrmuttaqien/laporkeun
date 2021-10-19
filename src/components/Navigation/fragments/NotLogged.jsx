@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import { stringPartialSearch } from '@/utils/helpers';
+import { stringPartialSearch } from '@/utils/helpers/stringOperation';
 
 import styles from '../Navigation.module.scss';
 

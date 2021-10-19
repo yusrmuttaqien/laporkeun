@@ -2,16 +2,13 @@ import { useEffect } from 'preact/hooks';
 import { useHistory } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
-import { disableScroll, enableScroll } from '@/utils/helpers';
+import { disableScroll, enableScroll } from '@/utils/helpers/scrollControl';
 
 import Extend from './fragments/Extend';
 
 import { detail_variant } from './variables/variants';
 
 import styles from './Details.module.scss';
-
-const _framer = () =>
-  import('@/utils/helpers/framer/_domMax').then((res) => res.default);
 
 export default function Details(props) {
   const { back, name } = props;

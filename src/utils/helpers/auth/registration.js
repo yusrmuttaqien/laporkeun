@@ -4,10 +4,11 @@ import {
   updateProfile,
 } from 'firebase/auth';
 
-import { main } from '@/utils/configs';
-import { addData, getQuery } from '../firestore';
-import { hash } from '..';
-import { updatesProfile } from '.';
+import { main } from '@/utils/configs/firebase';
+import addData from '../firestore/addData';
+import getQuery from '../firestore/getQuery';
+import hash from '../hash';
+import updatesProfile from './updatesProfile';
 import callToast from '@/components/Toast/callToast';
 
 export default async function registation(payload) {

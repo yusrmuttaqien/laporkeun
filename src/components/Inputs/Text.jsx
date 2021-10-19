@@ -1,6 +1,6 @@
-import { stringConcat } from '@/utils/helpers';
+import { stringConcat } from '@/utils/helpers/stringOperation';
 
-import styles from './Input.module.scss';
+import styles from './Text.module.scss';
 
 /**
  *
@@ -15,7 +15,7 @@ import styles from './Input.module.scss';
  * @returns Common input field
  */
 
-export default function Input(props) {
+export default function Text(props) {
   const { customClass, r, e, name, label, placeholder, type } = props;
   const inputClasses = stringConcat([
     styles['input-comp'],

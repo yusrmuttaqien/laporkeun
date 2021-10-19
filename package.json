@@ -1,10 +1,11 @@
 {
   "name": "laporkeun-preact",
+  "sideEffects": false,
   "version": "0.0.0",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview --host"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.1",
@@ -12,6 +13,7 @@
     "@hookstate/persistence": "^3.0.0",
     "@loadable/component": "^5.15.0",
     "browser-image-compression": "^1.0.16",
+    "file-type": "^16.5.3",
     "firebase": "^9.0.2",
     "framer-motion": "^4.1.17",
     "md5": "^2.3.0",

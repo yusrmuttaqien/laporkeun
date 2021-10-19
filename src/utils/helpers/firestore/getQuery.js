@@ -6,7 +6,7 @@ import {
   getDocs,
 } from 'firebase/firestore';
 
-import { main } from '@/utils/configs';
+import { main } from '@/utils/configs/firebase';
 
 export default async function getQuery(payload) {
   const { c, whereCase } = payload;

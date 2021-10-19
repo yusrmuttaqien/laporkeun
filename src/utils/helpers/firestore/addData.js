@@ -1,4 +1,4 @@
-import { main } from '@/utils/configs';
+import { main } from '@/utils/configs/firebase';
 import { doc, setDoc, collection, getFirestore } from 'firebase/firestore';
 
 /**

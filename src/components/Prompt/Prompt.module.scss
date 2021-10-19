@@ -1,4 +1,4 @@
-.details-comp {
+.prompt-comp {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7,8 +7,8 @@
   top: 0;
   left: 0;
   height: calc(var(--vh, 1vh) * 100);
-  width: 100vw;
-  z-index: 12;
+  width: 100%;
+  z-index: 13;
 
   background-color: rgba(var(--main-color-rgb), 0.6);
   font-size: 1rem;

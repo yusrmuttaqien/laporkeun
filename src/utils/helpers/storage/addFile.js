@@ -1,4 +1,4 @@
-import { main } from '@/utils/configs';
+import { main } from '@/utils/configs/firebase';
 import { getStorage, ref, uploadBytes } from 'firebase/storage';
 
 /**

@@ -1,7 +1,7 @@
 @use '@/method';
 
 .toast-comp {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   left: 0;
   max-height: calc(var(--vh, 1vh) * 100);

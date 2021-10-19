@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-import { stringConcat } from '@/utils/helpers';
+import { stringConcat } from '@/utils/helpers/stringOperation';
 
 import Image from '../Image';
 

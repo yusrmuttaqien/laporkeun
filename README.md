@@ -8,6 +8,10 @@
 - Do `npm i`
 - Run with `npm run dev`
 
+## Last progress
+
+- Revamp Image component logic
+
 ## Credits to myself, build using Preact, noted from 18th Sep 2021.
 
 - Further README will be added as new changes pushed.

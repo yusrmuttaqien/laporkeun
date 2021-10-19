@@ -1,12 +1,13 @@
 import { useLocation } from 'react-router-dom';
+import loadable from '@loadable/component';
 
-import { stringConcat } from '@/utils/helpers';
-
-import NotLogged from './fragments/NotLogged';
-import Logged from './fragments/Logged';
+import { stringConcat } from '@/utils/helpers/stringOperation';
+import { persistStateF } from '@/utils/configs/states';
 
 import styles from './Navigation.module.scss';
-import { persistStateF } from '@/utils/configs/states';
+
+const Logged = loadable(() => import('./fragments/Logged'));
+const NotLogged = loadable(() => import('./fragments/NotLogged'));
 
 export default function Navigation() {
   const isLogged = persistStateF().isLogged();

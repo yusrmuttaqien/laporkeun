@@ -2,9 +2,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 
 import callToast from '@/components/Toast/callToast';
-import { registration } from '@/utils/helpers/auth';
+import registration from '@/utils/helpers/auth/registration';
 
-import { Input } from '@/components/Input';
+import Input from '@/components/Inputs/Text';
 import Spinner from '@/components/Spinner';
 
 import _daftarValidation from '../variables/_daftarValidation';

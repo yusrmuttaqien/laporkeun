@@ -1,6 +1,6 @@
 import { default as ReactSelect, components } from 'react-select';
 
-import { stringConcat } from '@/utils/helpers';
+import { stringConcat } from '@/utils/helpers/stringOperation';
 
 import ChevronDown from '@/assets/chevron-down.svg?component';
 

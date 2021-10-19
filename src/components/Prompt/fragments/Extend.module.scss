@@ -1,0 +1,59 @@
+@use '@/method';
+
+.prompt-comp-extend-frag {
+  min-height: fit-content;
+  max-height: 90%;
+  width: 90%;
+  position: relative;
+
+  border-radius: 0.625em;
+  background-color: var(--main-color);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  overflow-y: auto;
+
+  .extend-title {
+    position: sticky;
+    top: 0;
+    left: 0;
+
+    h3 {
+      font-weight: 500;
+    }
+  }
+
+  .extend-content {
+    --default-padding: 0 1rem;
+
+    > * {
+      padding: var(--default-padding);
+    }
+  }
+
+  .extend-buttons {
+    display: flex;
+    gap: 1em;
+
+    position: sticky;
+    bottom: 0;
+    left: 0;
+
+    button {
+      @include method.button;
+
+      flex: 1;
+
+      font-size: 0.7em;
+
+      &.custom-button-secondary {
+        border: none;
+      }
+    }
+  }
+
+  .extend-title,
+  .extend-buttons {
+    width: 100%;
+    background-color: var(--main-color);
+    padding: 0.8em 1em;
+  }
+}

@@ -1,6 +1,6 @@
-import { main } from '@/utils/configs';
+import { main } from '@/utils/configs/firebase';
 import { getAuth, updateProfile, updateEmail } from 'firebase/auth';
-import { addFile } from '../storage';
+import addFile from '../storage/addFile';
 
 /**
  *

@@ -4,14 +4,13 @@ import { lazy } from '@loadable/component';
 
 import Switcher from './fragments/Switcher';
 import Loading from '@/components/Loading';
-import CRoute from '@/components/CRoute';
 
 import styles from './Entry.module.scss';
 
 const Login = lazy(() => import('./fragments/Login'));
 const Register = lazy(() => import('./fragments/Register'));
 
-function renderEntry() {
+export default function Entry() {
   let { path, url } = useRouteMatch();
 
   return (
@@ -27,8 +26,4 @@ function renderEntry() {
       </section>
     </section>
   );
-}
-
-export default function Entry() {
-  return <CRoute path="/entri" notLogged Component={renderEntry} />;
 }

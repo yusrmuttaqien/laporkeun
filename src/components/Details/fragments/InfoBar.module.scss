@@ -10,6 +10,8 @@
   z-index: 2;
   padding: 1em;
 
+  border-top-left-radius: 0.625em;
+  border-top-right-radius: 0.625em;
   background-color: rgba(var(--main-color-rgb), 0.2);
   backdrop-filter: blur(var(--blur));
 

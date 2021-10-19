@@ -1,7 +1,7 @@
 import { Redirect, Route } from 'react-router-dom';
 
 import { persistStateC } from '@/utils/configs/states';
-import { arrayAnd } from '@/utils/helpers';
+import { arrayAnd } from '@/utils/helpers/arrayOperation';
 
 export default function CRoute(props) {
   const {

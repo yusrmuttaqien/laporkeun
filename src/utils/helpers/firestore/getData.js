@@ -1,6 +1,6 @@
 import { doc, getDoc, getFirestore } from 'firebase/firestore';
 
-import { main } from '@/utils/configs';
+import { main } from '@/utils/configs/firebase';
 
 export default async function getData(payload) {
   const { c, i } = payload;
